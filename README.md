@@ -1,6 +1,6 @@
 # Netflix API Microservice Architecture
 
-This project contains a microservice architecture for an netflix application simulator.
+This project contains a microservice architecture for a netflix application simulator.
 
 ## Understanding this project
 
