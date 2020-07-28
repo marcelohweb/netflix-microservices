@@ -45,7 +45,7 @@ Before you start using, check the container logs to see if all microservices are
 
 You can use <a href="https://www.portainer.io/">Portainer</a> to check.
 
-<img src="http://66.7.213.120/~mswebcom/portainer.png">
+<img src="http://66.7.213.120/~mswebcom/portainer.png" width="609px">
 
 ## Modules
 
