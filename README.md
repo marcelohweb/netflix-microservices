@@ -1,6 +1,6 @@
 # Netflix API Microservice Architecture
 
-This project contains an microservice architecture for an netflix application simulator.
+This project contains a microservice architecture for an netflix application simulator.
 
 ## Understanding this project
 
@@ -31,14 +31,14 @@ All you need to do is run the following commands:
 	cd netflix-microservices
 	make build
 	make run
-	
+
 You can then access eureka service discovery here: <a href="#">http://localhost:8010/</a>
 
 Username: user  
 Password: user
-	
-You will see all registered microservices as the following image:	
-	
+
+You will see all registered microservices as the following image:
+
 <img src="http://66.7.213.120/~mswebcom/eureka.png">
 
 Before you start using, check the container logs to see if all microservices are running. It takes some time.
@@ -97,7 +97,7 @@ Some modules reference the others by using their container name. If you want to 
 ### Prerequisites
 The following items should be installed in your system:
 * Java 8.
-* Your preferred IDE 
+* Your preferred IDE
   * I recommend <a href="https://spring.io/tools">Spring Tools Suite</a>
   * Clone the project
   * Import as Existing Maven Projects
