@@ -1,0 +1,140 @@
+version: "3.4"
+
+x-database-config-data:
+  &mysql-connection-data
+    environment:
+        MYSQL_USER: "user"
+        MYSQL_PASSWORD: "password"
+        MYSQL_DATABASE: "db_netflix_app"
+        MYSQL_ROOT_PASSWORD: root
+
+x-database-user-data:
+  &mongo-connection-data
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+        MONGO_INITDB_DATABASE: "db_netflix_app_user"
+        MONGODB_USERNAME: "user"
+        MONGODB_PASSWORD: "password"
+
+x-config-server:
+  &spring-config
+    environment:
+    - SPRING_CLOUD_CONFIG_URI=http://netflix-config:8012
+
+services:
+  netflix-config:
+    build:
+      context: ./netflix-config
+      dockerfile: ./Dockerfile
+    image: netflix-config
+    ports:
+    - 8012:8012
+    container_name: netflix-config
+
+  netflix-service-discovery:
+    build:
+      context: ./netflix-service-discovery
+      dockerfile: ./Dockerfile
+    image: netflix-service-discovery
+    ports:
+    - 8010:8010
+    <<: *spring-config
+    depends_on:
+    - netflix-config
+    container_name: netflix-service-discovery
+
+  netflix-api-gateway:
+    build:
+      context: ./netflix-api-gateway
+      dockerfile: ./Dockerfile
+    image: netflix-api-gateway
+    ports:
+    - 8011:8011
+    <<: *spring-config
+    depends_on:
+    - netflix-service-discovery
+    - netflix-config
+    container_name: netflix-api-gateway
+
+  mysql-db:
+    image: mysql
+    ports:
+      - "3306"
+    <<: *mysql-connection-data
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./netflix-data/init.sql:/data/application/init.sql
+    container_name: mysql-db
+
+  phpmyadmin:
+    depends_on:
+      - mysql-db
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: mysql-db
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+        MONGO_INITDB_DATABASE: "db_netflix_app_user"
+        MONGO_NON_ROOT_USERNAME: "user"
+        MONGO_NON_ROOT_PASSWORD: "password"
+    volumes:
+      - ./mongo/docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    container_name: mongo
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: user
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+    container_name: mongo-db-express
+    links:
+      - mongo
+
+  netflix-user-microservice:
+    build:
+      context: ./netflix-user-microservice
+      dockerfile: ./Dockerfile
+    image: netflix-user-microservice
+    depends_on:
+    - netflix-config
+    - mysql-db
+    <<: *spring-config
+    container_name: netflix-user-microservice
+
+  netflix-category-microservice:
+    build:
+      context: ./netflix-category-microservice
+      dockerfile: ./Dockerfile
+    image: netflix-category-microservice
+    depends_on:
+    - netflix-config
+    - mysql-db
+    <<: *spring-config
+    container_name: netflix-category-microservice
+
+  netflix-movie-microservice:
+    build:
+      context: ./netflix-movie-microservice
+      dockerfile: ./Dockerfile
+    image: netflix-movie-microservice
+    depends_on:
+    - netflix-config
+    - mysql-db
+    <<: *spring-config
+    container_name: netflix-movie-microservice
+

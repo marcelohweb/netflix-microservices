@@ -1,0 +1,508 @@
+{
+	"info": {
+		"_postman_id": "9c3a9527-c7d0-49cf-9724-b5145b52e55b",
+		"name": "Microservices-Netflix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "encrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{put value here}"
+				},
+				"url": {
+					"raw": "http://localhost:8012/encrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "decrypt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{put encrypted value here}"
+				},
+				"url": {
+					"raw": "http://localhost:8012/decrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8012",
+					"path": [
+						"decrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category-create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"{put name here}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8011/category-ws/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"category-ws",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"{put id here}\",\n    \"name\": \"{put name here}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8011/category-ws/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"category-ws",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category-find-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8011/category-ws/category/{put id here}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"category-ws",
+						"category",
+						"{put id here}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category-get-all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8011/category-ws/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"category-ws",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category-delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8011/category-ws/category/{put id here}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"category-ws",
+						"category",
+						"{put id here}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie-create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Movie Name\",\n\t\"categoryId\": \"{put category id here}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8011/movie-ws/movie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"movie-ws",
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"{put id here}\",\n\t\"title\": \"Movie name updated\",\n\t\"categoryId\": \"{put category id here}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8011/movie-ws/movie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"movie-ws",
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie-get-all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8011/movie-ws/movie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"movie-ws",
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie-find-by-id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8011/movie-ws/movie/{put id here}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"movie-ws",
+						"movie",
+						"{put id here}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movie-delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8011/movie-ws/movie/{put id here}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"movie-ws",
+						"movie",
+						"{put id here}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"{put email here}\",\n\t\"password\": \"{put password here}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8011/users-ws/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"users-ws",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"{put first name here}\",\n\t\"lastName\": \"{put last name here}\",\n\t\"email\": \"{put email name here}\",\n\t\"password\": \"{put password name here}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8011/users-ws/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8011",
+					"path": [
+						"users-ws",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
