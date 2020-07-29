@@ -19,6 +19,7 @@ You don't need java or maven in your machine because this project is compiled in
 
 ### Prerequisites
 
+* <a href="https://www.gnu.org/software/make/">Make</a>
 * <a href="https://git-scm.com/">Git</a>
 * <a href="https://www.docker.com/">Docker</a>
 * <a href="https://docs.docker.com/compose/gettingstarted/">Docker-compose</a>
