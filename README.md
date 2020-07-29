@@ -27,7 +27,7 @@ You don't need java or maven in your machine because this project is compiled in
 
 All you need to do is run the following commands:
 
-	git clone git@github.com:marcelohweb/netflix-microservices.git
+	git clone https://github.com/marcelohweb/netflix-microservices
 	cd netflix-microservices
 	make build
 	make run
