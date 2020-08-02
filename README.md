@@ -33,6 +33,12 @@ All you need to do is run the following commands:
 	make build
 	make run
 
+Before you start using, check the container logs to see if all microservices are running. It takes some time.
+
+You can use <a href="https://www.portainer.io/">Portainer</a> to check.
+
+<img src="http://66.7.213.120/~mswebcom/portainer.png" width="485px">
+
 You can then access eureka service discovery here: <a href="#">http://localhost:8010/</a>
 
 Username: user  
@@ -41,12 +47,6 @@ Password: user
 You will see all registered microservices as the following image:
 
 <img src="http://66.7.213.120/~mswebcom/eureka.png">
-
-Before you start using, check the container logs to see if all microservices are running. It takes some time.
-
-You can use <a href="https://www.portainer.io/">Portainer</a> to check.
-
-<img src="http://66.7.213.120/~mswebcom/portainer.png" width="609px">
 
 ## Modules
 
@@ -102,8 +102,16 @@ The following items should be installed in your system:
   * I recommend <a href="https://spring.io/tools">Spring Tools Suite</a>
   * Clone the project
   * Import as Existing Maven Projects
-  * If you are using Spring Tools Suite:Remember Right click -> Run as -> Spring Boot App (the first 3 in that sequence: microservice-config, netflix-service-discovery, netflix-api-gateway)
+  * If you are using Spring Tools Suite: Right click -> Run as -> Spring Boot App (the first 3 in that sequence: microservice-config, netflix-service-discovery, netflix-api-gateway)
 
-Remember you need mysql and mongo database running. You can use the database containers created before.
+Remember you need mysql and mongo database running. You can use the database containers created before. Just run the mysql and mongo containers and stop the others.
+
+Enter the absolute path of the config directory in /netflix-config/src/main/resources/application.properties
+
+    spring.cloud.config.server.native.search-locations=file:/path/to/netflix-config/config
+    
+Enter the endpoint of the config server in the bootstrap.properties of each microservice
+
+    spring.cloud.config.uri=http://netflix-config:8012
 
 Enjoy it!
