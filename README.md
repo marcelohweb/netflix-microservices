@@ -9,7 +9,7 @@ both decentralized and shared databases.
 
 The second goal is to implement a DevOps approach to build a set of <a href="https://spring.io/guides/gs/spring-boot">Spring Boot</a> microservices inside a docker container and use them by another container.
 
-<a href="#">See the article here</a>
+<a href="https://medium.com/@marceloh.web/spring-boot-microservices-architecture-using-shared-database-69312a968530">See the article here</a>
 
 ## Getting started
 
@@ -109,9 +109,5 @@ Remember you need mysql and mongo database running. You can use the database con
 Enter the absolute path of the config directory in /netflix-config/src/main/resources/application.properties
 
     spring.cloud.config.server.native.search-locations=file:/path/to/netflix-config/config
-    
-Enter the endpoint of the config server in the bootstrap.properties of each microservice
-
-    spring.cloud.config.uri=http://netflix-config:8012
 
 Enjoy it!
