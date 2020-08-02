@@ -73,7 +73,7 @@ You can use this API by importing the <a href="https://www.postman.com/">Postman
 
 First of all, you need to create a user using user-create request.
 
-<img src="http://66.7.213.120/~mswebcom/create-user.png">
+<img src="http://66.7.213.120/~mswebcom/create-user.png" width="510px">
 
 After that, use user-login request to authenticate and get the token. The token is in the header response.
 
