@@ -81,12 +81,7 @@ services:
     image: mongo
     ports:
       - 27017:27017
-    environment:
-        MONGO_INITDB_ROOT_USERNAME: root
-        MONGO_INITDB_ROOT_PASSWORD: root
-        MONGO_INITDB_DATABASE: "db_netflix_app_user"
-        MONGO_NON_ROOT_USERNAME: "user"
-        MONGO_NON_ROOT_PASSWORD: "password"
+    <<: *mongo-connection-data
     volumes:
       - ./mongo/docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     container_name: mongo
@@ -137,4 +132,3 @@ services:
     - mysql-db
     <<: *spring-config
     container_name: netflix-movie-microservice
-

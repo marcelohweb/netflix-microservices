@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.soares.microservice.commons.dto.CategoryDTO;
 import com.soares.microservice.commons.dto.MovieDTO;
 import com.soares.microservice.movie.api.request.MovieCreateRequestModel;
 import com.soares.microservice.movie.api.request.MovieUpdateRequestModel;
@@ -49,6 +50,10 @@ public class MovieController {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		MovieDTO movieDTO = modelMapper.map(movieRequest, MovieDTO.class);
+		
+		CategoryDTO categoryDTO = new CategoryDTO();
+		categoryDTO.setId(movieRequest.getCategoryId());
+		movieDTO.setCategory(categoryDTO);
 		
 		movieDTO = service.insert(movieDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(movieDTO);

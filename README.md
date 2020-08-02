@@ -71,7 +71,7 @@ For the microservices, the connection data for each microservice is in the netfl
 
 You can use this API by importing the <a href="https://www.postman.com/">Postman</a> collection located in the postman directory.
 
-First of all, you need to create a user using user-login request.
+First of all, you need to create a user using user-create request.
 
 <img src="http://66.7.213.120/~mswebcom/create-user.png">
 
