@@ -42,16 +42,4 @@
 			<version>2.3.2.RELEASE</version>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.1.1</version>
-				<configuration>
-					<outputDirectory>deploy</outputDirectory>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
