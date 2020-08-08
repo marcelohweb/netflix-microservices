@@ -5,7 +5,7 @@ case $1 in
 
     docker build . -t microservices-compiler
 
-    docker run  -v $(pwd):/home/compiler/ microservices-compiler
+    docker run -v $(pwd):/home/compiler/ microservices-compiler
 
     docker rmi microservices-compiler --force
 
