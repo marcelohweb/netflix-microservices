@@ -37,7 +37,7 @@ Before you start using, check the container logs to see if all microservices are
 
 You can use <a href="https://www.portainer.io/">Portainer</a> to check.
 
-<img src="http://66.7.213.120/~mswebcom/portainer.png" width="485px">
+<img src="https://miro.medium.com/max/670/1*3lIQDH8HeEfbpdJWXXFY8g.png" width="609px">
 
 You can then access eureka service discovery here: <a href="#">http://localhost:8010/</a>
 
@@ -46,7 +46,7 @@ Password: user
 
 You will see all registered microservices as the following image:
 
-<img src="http://66.7.213.120/~mswebcom/eureka.png">
+<img src="https://miro.medium.com/max/770/1*24vU6WBRjDWvBC5Assh6Rg.png">
 
 ## Modules
 
@@ -73,11 +73,11 @@ You can use this API by importing the <a href="https://www.postman.com/">Postman
 
 First of all, you need to create a user using user-create request.
 
-<img src="http://66.7.213.120/~mswebcom/create-user.png" width="510px">
+<img src="https://miro.medium.com/max/694/1*ErgwrclDzDzmjL83IVpvow.png">
 
 After that, use user-login request to authenticate and get the token. The token is in the header response.
 
-<img src="http://66.7.213.120/~mswebcom/login.png">
+<img src="https://miro.medium.com/max/770/1*RICeZqRhv2rTqiEz78YoNw.png">
 
 Once you have the token, feel free to create categories and movies.
 
